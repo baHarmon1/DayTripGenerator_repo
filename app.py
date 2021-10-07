@@ -46,10 +46,6 @@ def pick_options():  # while user is_satisfied == False
 
 def trip_confirmation_input():
     if_user_is_happy = False
-    if_user_is_happy_destination = False
-    if_user_is_happy_resteraunt = False
-    if_user_is_happy_mode_of_transportation = False
-    if_user_is_happy_entertainment = False
     full_list = pick_options()  # make sure to return
     while if_user_is_happy == False:
         print(full_list)
@@ -63,8 +59,10 @@ def trip_confirmation_input():
             print("Press 3 to re-pick mode of transportation ")
             print("Press 4 to re-pick form of entertainment ")
             user_repick = input("Which option would you like to re-pick ")
-            while if_user_is_happy_destination == False:
-                if user_repick == "1":
+
+            if user_repick == "1":
+                if_user_is_happy_destination = False
+                while if_user_is_happy_destination == False:
                     full_list[0] = random.choice(destinations)
                     print(full_list[0])
                     user_repick_destination_confirmation = input(
@@ -72,60 +70,45 @@ def trip_confirmation_input():
                     if user_repick_destination_confirmation == "yes":
                         if_user_is_happy_destination = True
                     else:
-                        if_user_is_happy_destination == False
-                elif user_repick == "2":
+                        if_user_is_happy_destination = False
+            if user_repick == "2":
+                if_user_is_happy_resteraunt = False
+                while if_user_is_happy_resteraunt == False:
                     full_list[1] = random.choice(resteraunts)
                     print(full_list[1])
                     user_repick_resteraunt_confirmation = input(
                         "Is this the resteraunt you prefer? ")
                     if user_repick_resteraunt_confirmation == "yes":
-                        if_user_is_happy == False
+                        if_user_is_happy_resteraunt = True
                     else:
-                        if_user_is_happy == False
-                elif user_repick == "3":
+                        if_user_is_happy_resteraunt = False
+            if user_repick == "3":
+                if_user_is_happy_mode_of_transportation = False
+                while if_user_is_happy_mode_of_transportation == False:
                     full_list[2] = random.choice(mode_of_transportations)
                     print(full_list[2])
                     user_repick_transportation_confirmation = input(
                         "Is this the mode of transportation you prefer? ")
                     if user_repick_transportation_confirmation == "yes":
-                        if_user_is_happy == False
+                        if_user_is_happy_mode_of_transportation = True
                     else:
-                        if_user_is_happy == False
-                elif user_repick == "4":
+                        if_user_is_happy_mode_of_transportation = False
+            if user_repick == "4":
+                if_user_is_happy_entertainment = False
+                while if_user_is_happy_entertainment == False:
                     full_list[3] = random.choice(entertainment_options)
                     print(full_list[3])
                     user_repick_entertainment_confirmation = input(
                         "Is this the entertainment you prefer? ")
                     if user_repick_entertainment_confirmation == "yes":
-                        if_user_is_happy == False
+                        if_user_is_happy_entertainment = True
                     else:
-                        if_user_is_happy == False
-
-                    # final_trip_confirmation()
-
-        # else:
-        #     print("You did not enter a valid command! ")
-        #     trip_confirmation()
+                        if_user_is_happy_entertainment = False
 
 
 def trip_confirmation():  # Maybe condense down into another function
     welcome_message()
     trip_confirmation_input()
-    # final_trip_confirmation()
-
-
-# def final_trip_confirmation():
-#     # add the final day trip here when complete
-#     final_user_trip_confirmation = input(
-#         "Are you sure this is the trip you would like to take? ")
-#     if final_user_trip_confirmation.upper() == "YES":
-#         print("Have a nice trip!")
-#         return
-#     elif final_user_trip_confirmation.upper() == "NO":
-#         return trip_confirmation()
-#     else:
-#         print("You did not enter a valid command!")
-#         return trip_confirmation()
 
 
 trip_confirmation()
