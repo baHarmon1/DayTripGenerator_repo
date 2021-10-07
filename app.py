@@ -59,6 +59,10 @@ def trip_confirmation():  # Maybe condense down into another function
     print(final_trip_list)
     trip_confirmation_input()
     print(final_trip_list)
+    final_trip_confirmation()
+
+
+def final_trip_confirmation():
     final_user_trip_confirmation = input(
         "Are you sure this is the trip you would like to take? ")
     if final_user_trip_confirmation.upper() == "YES":
