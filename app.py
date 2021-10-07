@@ -109,6 +109,7 @@ def trip_confirmation_input():
 def trip_confirmation():  # Maybe condense down into another function
     welcome_message()
     trip_confirmation_input()
+    print("Have a good trip!")
 
 
 trip_confirmation()
