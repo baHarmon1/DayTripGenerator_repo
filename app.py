@@ -45,6 +45,7 @@ def trip_confirmation_input():
     user_trip_confirmation = input(
         "Does this trip sound fun to you? Please reply with yes or no. ")
     if user_trip_confirmation.upper() == "YES":
+
         return
     elif user_trip_confirmation.upper() == "NO":
         trip_confirmation()
@@ -58,7 +59,6 @@ def trip_confirmation():  # Maybe condense down into another function
     final_trip_list = pick_options()
     print(final_trip_list)
     trip_confirmation_input()
-    print(final_trip_list)
     final_trip_confirmation()
 
 
