@@ -45,56 +45,61 @@ def pick_options():  # while user is_satisfied == False
 
 
 def trip_confirmation_input():
-    if_user_happy = False
+    if_user_is_happy = False
+    if_user_is_happy_destination = False
+    if_user_is_happy_resteraunt = False
+    if_user_is_happy_mode_of_transportation = False
+    if_user_is_happy_entertainment = False
     full_list = pick_options()  # make sure to return
-    while if_user_happy == False:
+    while if_user_is_happy == False:
         print(full_list)
         user_trip_confirmation = input(
             "Does this trip sound fun to you? Please reply with yes or no. ")
         if user_trip_confirmation.upper() == "YES":
-            return
+            if_user_is_happy = True
         elif user_trip_confirmation.upper() == "NO":
             print("Press 1 to re-pick destination ")
             print("Press 2 to re-pick resteraunt ")
             print("Press 3 to re-pick mode of transportation ")
             print("Press 4 to re-pick form of entertainment ")
             user_repick = input("Which option would you like to re-pick ")
-            if user_repick == "1":
-                full_list[0] = random.choice(destinations)
-                print(full_list)
-                user_repick_destination_confirmation = input(
-                    "Is this the destination you prefer? ")
-                if user_repick_destination_confirmation == "yes":
-                    return
-                else:
-                    return
-            elif user_repick == "2":
-                full_list[1] = random.choice(resteraunts)
-                print(full_list)
-                user_repick_resteraunt_confirmation = input(
-                    "Is this the resteraunt you prefer? ")
-                if user_repick_resteraunt_confirmation == "yes":
-                    return
-                else:
-                    return
-            elif user_repick == "3":
-                full_list[2] = random.choice(mode_of_transportations)
-                print(full_list)
-                user_repick_transportation_confirmation = input(
-                    "Is this the mode of transportation you prefer? ")
-                if user_repick_transportation_confirmation == "yes":
-                    return
-                else:
-                    return
-            elif user_repick == "4":
-                full_list[3] = random.choice(entertainment_options)
-                print(full_list)
-                user_repick_entertainment_confirmation = input(
-                    "Is this the entertainment you prefer? ")
-                if user_repick_entertainment_confirmation == "yes":
-                    return
-                else:
-                    return
+            while if_user_is_happy_destination == False:
+                if user_repick == "1":
+                    full_list[0] = random.choice(destinations)
+                    print(full_list[0])
+                    user_repick_destination_confirmation = input(
+                        "Is this the destination you prefer? ")
+                    if user_repick_destination_confirmation == "yes":
+                        if_user_is_happy_destination = True
+                    else:
+                        if_user_is_happy_destination == False
+                elif user_repick == "2":
+                    full_list[1] = random.choice(resteraunts)
+                    print(full_list[1])
+                    user_repick_resteraunt_confirmation = input(
+                        "Is this the resteraunt you prefer? ")
+                    if user_repick_resteraunt_confirmation == "yes":
+                        if_user_is_happy == False
+                    else:
+                        if_user_is_happy == False
+                elif user_repick == "3":
+                    full_list[2] = random.choice(mode_of_transportations)
+                    print(full_list[2])
+                    user_repick_transportation_confirmation = input(
+                        "Is this the mode of transportation you prefer? ")
+                    if user_repick_transportation_confirmation == "yes":
+                        if_user_is_happy == False
+                    else:
+                        if_user_is_happy == False
+                elif user_repick == "4":
+                    full_list[3] = random.choice(entertainment_options)
+                    print(full_list[3])
+                    user_repick_entertainment_confirmation = input(
+                        "Is this the entertainment you prefer? ")
+                    if user_repick_entertainment_confirmation == "yes":
+                        if_user_is_happy == False
+                    else:
+                        if_user_is_happy == False
 
                     # final_trip_confirmation()
 
